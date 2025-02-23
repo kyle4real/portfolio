@@ -76,24 +76,28 @@ export default function Home() {
             <Section id={SectionId.About}>
               <div>
                 <p className="mb-4">
-                  I'm Kyle, a senior software engineer specializing in full stack web development. My passion lies in
-                  building meaningful products that seamlessly integrate design, performance, and functionality to
-                  deliver delightful user experiences.
+                  I'm Kyle, a driven senior software engineer specializing in full stack web development. My passion
+                  lies in building meaningful products that seamlessly integrate design, performance, and functionality
+                  to deliver delightful user experiences. With a strong background in architecting end-to-end solutions,
+                  I'm adept at collaborating with cross-functional teams to deliver high-quality software that meets
+                  business objectives.
                 </p>
                 <p className="mb-4">
-                  I'm Kyle, a senior software engineer specializing in full stack web development. My passion lies in
-                  building meaningful products that seamlessly integrate design, performance, and functionality to
-                  deliver delightful user experiences.
+                  Currently I'm a software engineer at UpLift, a mental health startup whose mission is to rebuild
+                  mental healthcare to work for everyone. I contribute to the creation and maintenance of UI components,
+                  APIs, core features, and integrations that power UpLift's platform. Beyond coding, I mentor junior
+                  developers, participate in code reviews, and help shape the technical direction of the product.
                 </p>
                 <p className="mb-4">
-                  I'm Kyle, a senior software engineer specializing in full stack web development. My passion lies in
-                  building meaningful products that seamlessly integrate design, performance, and functionality to
-                  deliver delightful user experiences.
+                  In the past, I've had the opportunity to architech and build a logistics platform for Astro Vinyl Art.
+                  I was responsible for the entire software development lifecycle, from design to deployment, and
+                  collaborated with stakeholders to define requirements, scope, and timelines. I also hired and managed
+                  a developer to help build the platform - a rewarding experience that taught me the importance of
+                  leadership and communication.
                 </p>
                 <p>
-                  I'm Kyle, a senior software engineer specializing in full stack web development. My passion lies in
-                  building meaningful products that seamlessly integrate design, performance, and functionality to
-                  deliver delightful user experiences.
+                  In my spare time, I'm usually working on a side project, learning a new skill, reading, playing
+                  guitar, or exploring the great outdoors.
                 </p>
               </div>
             </Section>
@@ -108,7 +112,13 @@ export default function Home() {
                       <ExperienceCardTitle href="https://www.linkedin.com/company/uplift-therapy/">
                         <ExperienceCardTitleRoleAndCompany role="Software Engineer" company="UpLift" />
                       </ExperienceCardTitle>
-                      <ExperienceCardDescription>Build and maintain UpLift.</ExperienceCardDescription>
+                      <ExperienceCardDescription>
+                        Build and maintain critical components used across UpLift's frontend. Architect and implement
+                        core features, integrations, and APIs that power the platform. Mentor junior developers, conduct
+                        code reviews, and help shape the technical direction of the product. Work closely with product
+                        managers, designers, and developers to deliver and advocate for accessible, performant, and
+                        delightful user experiences.
+                      </ExperienceCardDescription>
                       <TechStack
                         technologies={[
                           "React",
@@ -136,7 +146,13 @@ export default function Home() {
                       <ExperienceCardTitle href="https://www.linkedin.com/company/astro-vinyl-art/">
                         <ExperienceCardTitleRoleAndCompany role="Software Engineer" company="Astro Vinyl Art" />
                       </ExperienceCardTitle>
-                      <ExperienceCardDescription>Build and maintain Astro Vinyl Art.</ExperienceCardDescription>
+                      <ExperienceCardDescription>
+                        Architected and built a logistics platform that streamlined operations and improved efficiency.
+                        Managed the entire software development lifecycle, from design to deployment. Collaborated with
+                        stakeholders to define requirements, scope, and timelines. Hired and managed a developer to help
+                        build the platform. Conducted code reviews, mentored junior developers, and provided technical
+                        guidance to the team.
+                      </ExperienceCardDescription>
                       <TechStack
                         technologies={["React", "TypeScript", "Node.js", "Express", "MongoDB", "Mongoose", "REST"]}
                       />
