@@ -42,7 +42,7 @@ const socialItems = [
 ];
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState<SectionId>(SectionId.About);
+  const [activeSection, setActiveSection] = useState<SectionId | undefined>(undefined);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
