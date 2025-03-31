@@ -71,7 +71,7 @@ export default function Home() {
 
   return (
     <Spotlight>
-      <div className="min-h-screen mx-auto max-w-screen-xl px-6 py-12 md:py-16 lg:py-0">
+      <div className="min-h-screen mx-auto max-w-screen-xl px-6 py-12 md:py-16 lg:py-0 ">
         <div className="lg:flex lg:justify-between lg:gap-4">
           <header className="lg:w-1/2 lg:py-24 lg:sticky lg:top-0 lg:max-h-screen lg:flex lg:flex-col lg:justify-between">
             <div>
@@ -89,10 +89,10 @@ export default function Home() {
 
                     return (
                       <li key={id}>
-                        <a href={`#${id}`} className={cn("py-3 items-center flex", isActive && "text-blue-400")}>
+                        <Link href={`#${id}`} className={cn("py-3 items-center flex", isActive && "text-blue-400")}>
                           <span className={cn("block h-px bg-blue-400 transition-[width]", isActive ? "w-8" : "w-0")} />
                           <span className={cn(isActive && "pl-1")}>{label}</span>
-                        </a>
+                        </Link>
                       </li>
                     );
                   })}
@@ -158,17 +158,15 @@ export default function Home() {
                       </ExperienceCardDescription>
                       <TechStack
                         technologies={[
-                          "React",
-                          "TypeScript",
-                          "Storybook",
-                          "Material UI",
-                          "React Query",
-                          "Python",
-                          "Flask",
-                          "Hasura",
-                          "GraphQL",
-                          "REST",
-                          "PostgreSQL",
+                          "REACT",
+                          "TYPESCRIPT",
+                          "STORYBOOK",
+                          "MATERIALUI",
+                          "REACT_QUERY",
+                          "PYTHON",
+                          "FLASK",
+                          "GRAPHQL",
+                          "POSTGRES",
                         ]}
                       />
                     </ExperienceCardMain>
@@ -191,16 +189,7 @@ export default function Home() {
                         guidance to the team.
                       </ExperienceCardDescription>
                       <TechStack
-                        technologies={[
-                          "React",
-                          "TypeScript",
-                          "Node.js",
-                          "Express",
-                          "MongoDB",
-                          "Mongoose",
-                          "REST",
-                          "Material UI",
-                        ]}
+                        technologies={["REACT", "TYPESCRIPT", "NODE", "EXPRESS", "MONGODB", "MONGOOSE", "MATERIALUI"]}
                       />
                     </ExperienceCardMain>
                   </ExperienceCard>
@@ -222,19 +211,76 @@ export default function Home() {
                         alt="Interactive Event Map Screenshot"
                         width={800}
                         height={600}
-                        className="rounded-md shadow-sm object-container aspect-video w-full hover:opacity-90 transition"
+                        className="rounded-md shadow-sm object-cover aspect-video w-full hover:opacity-90 transition"
                       />
                     </div>
                     <ProjectCardMain>
-                      <ProjectCardHeader href="https://github.com/kylefriel/map-event-builder">
-                        FinTracker
-                      </ProjectCardHeader>
+                      <ProjectCardHeader href="https://www.listvendgo.com/">ListVendGo</ProjectCardHeader>
+                      <ProjectCardDescription>
+                        A three-sided event platform that connects event hosts, vendors, and go-ers in one seamless
+                        experience. Hosts can manage events, vendors can apply to sell, and go-ers can browse and
+                        attend.
+                      </ProjectCardDescription>
+                      <div className="mt-4">
+                        <TechStack
+                          technologies={[
+                            "NEXT",
+                            "REACT",
+                            "NODE",
+                            "EXPRESS",
+                            "PRISMA",
+                            "POSTGRES",
+                            "TAILWIND",
+                            "TRPC",
+                            "REACT_QUERY",
+                          ]}
+                        />
+                      </div>
+                    </ProjectCardMain>
+                  </ProjectCard>
+                </li>
+                <li>
+                  <ProjectCard>
+                    <div className="z-10 sm:col-span-2">
+                      <Image
+                        src="/images/fintrackr-4.png"
+                        alt="Interactive Event Map Screenshot"
+                        width={800}
+                        height={600}
+                        className="rounded-md shadow-sm object-cover aspect-video w-full hover:opacity-90 transition"
+                      />
+                    </div>
+                    <ProjectCardMain>
+                      <ProjectCardHeader href="https://fin-trackr.vercel.app/">FinTracker</ProjectCardHeader>
                       <ProjectCardDescription>
                         Personal finance tracker where you can link banks accounts via Plaid and visualize your complete
                         financial landscape
                       </ProjectCardDescription>
                       <div className="mt-4">
-                        <TechStack technologies={["React", "Tailwind CSS", "TypeScript", "tRPC", "PostgreSQL"]} />
+                        <TechStack technologies={["NEXT", "REACT", "TAILWIND", "POSTGRES", "PRISMA", "PLAID"]} />
+                      </div>
+                    </ProjectCardMain>
+                  </ProjectCard>
+                </li>
+                <li>
+                  <ProjectCard>
+                    <div className="z-10 sm:col-span-2">
+                      <Image
+                        src="/images/tristate.png"
+                        alt="Interactive Event Map Screenshot"
+                        width={800}
+                        height={600}
+                        className="rounded-md shadow-sm object-cover aspect-video w-full hover:opacity-90 transition"
+                      />
+                    </div>
+                    <ProjectCardMain>
+                      <ProjectCardHeader href="https://www.tristatedesigner.com/">Tri-State Designer</ProjectCardHeader>
+                      <ProjectCardDescription>
+                        A website for a local agency specializing in web design for businesses. Includes a contact form
+                        for potential clients to get in touch and start their design journey.
+                      </ProjectCardDescription>
+                      <div className="mt-4">
+                        <TechStack technologies={["NEXT", "REACT", "TAILWIND", "MONGODB", "MONGOOSE"]} />
                       </div>
                     </ProjectCardMain>
                   </ProjectCard>
@@ -247,19 +293,14 @@ export default function Home() {
                         alt="Interactive Event Map Screenshot"
                         width={800}
                         height={600}
-                        className="rounded-md shadow-sm object-container aspect-video w-full hover:opacity-90 transition"
+                        className="rounded-md shadow-sm object-cover aspect-video w-full hover:opacity-90 transition"
                       />
                     </div>
                     <ProjectCardMain>
-                      <ProjectCardHeader href="https://github.com/kylefriel/map-event-builder">
-                        Portfolio (v1)
-                      </ProjectCardHeader>
-                      <ProjectCardDescription>
-                        Personal finance tracker where you can link banks accounts via Plaid and visualize your complete
-                        financial landscape
-                      </ProjectCardDescription>
+                      <ProjectCardHeader href="https://kylefriel.netlify.app/">Portfolio (v1)</ProjectCardHeader>
+                      <ProjectCardDescription>First version of my portfolio built in 2021.</ProjectCardDescription>
                       <div className="mt-4">
-                        <TechStack technologies={["React", "Tailwind CSS", "TypeScript", "tRPC", "PostgreSQL"]} />
+                        <TechStack technologies={["REACT", "SCSS", "JAVASCRIPT"]} />
                       </div>
                     </ProjectCardMain>
                   </ProjectCard>
@@ -285,7 +326,7 @@ const Section: React.FC<SectionProps> = (props) => {
       className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
       aria-label={navItemIdToLabel[props.id]}
     >
-      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-zinc-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+      <div className="sticky top-0 z-20 -mx-6 mb-4 w-full bg-zinc-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
         <h2 className="text-2xl font-bold tracking-tight text-zinc-200 sm:text-3xl">{navItemIdToLabel[props.id]}</h2>
       </div>
       {props.children}
@@ -294,7 +335,7 @@ const Section: React.FC<SectionProps> = (props) => {
 };
 export const ProjectCard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 gap-5 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
       <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-zinc-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
       {children}
     </div>
