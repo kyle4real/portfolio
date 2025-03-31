@@ -4,30 +4,33 @@ import {
   ExperienceCardTitle,
   ExperienceCardTitleRoleAndCompany,
   ExperienceCardDescription,
+  ExperienceCardMainProps,
 } from "@/components/experience-card";
 import { LinkAndArrow } from "@/components/link-and-arrow";
 import { Spotlight } from "@/components/spotlight";
 import { TechStack } from "@/components/tech-stack";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import Image from "next/image";
 import Link from "next/link";
 
 const enum SectionId {
   About = "about",
   Experience = "experience",
-  // Projects = "projects",
+  Projects = "projects",
 }
 
 const navItemIdToLabel = {
   [SectionId.About]: "About",
   [SectionId.Experience]: "Experience",
-  // [SectionId.Projects]: "Projects",
+  [SectionId.Projects]: "Projects",
 } as const;
 
 const navItems = [
   { label: navItemIdToLabel[SectionId.About], id: SectionId.About },
   { label: navItemIdToLabel[SectionId.Experience], id: SectionId.Experience },
-  // { label: navItemIdToLabel[SectionId.Projects], id: SectionId.Projects },
+  { label: navItemIdToLabel[SectionId.Projects], id: SectionId.Projects },
 ];
 
 const socialItems = [
@@ -45,10 +48,10 @@ export default function Home() {
               <h1 className="text-4xl font-bold tracking-tight text-zinc-200 sm:text-5xl">
                 <Link href="/">Kyle Friel</Link>
               </h1>
-              <h2 className="mt-3 text-lg font-medium tracking-tight text-zinc-200 sm:text-xl">Full Stack Engineer</h2>
-              <p className="mt-4 max-w-xs leading-normal">
-                I build accessible, pixel-perfect digital experiences for the web.
-              </p>
+              <h2 className="mt-3 text-lg font-medium tracking-tight text-zinc-200 sm:text-xl">
+                Full Stack Web Developer
+              </h2>
+              <p className="mt-4 max-w-xs leading-normal">I help startups and teams build modern web applications.</p>
               <nav className="hidden lg:block">
                 <ul className="mt-16 w-max">
                   {navItems.map(({ label, id }) => (
@@ -76,11 +79,11 @@ export default function Home() {
             <Section id={SectionId.About}>
               <div>
                 <p className="mb-4">
-                  I'm Kyle, a driven senior software engineer specializing in full stack web development. My passion
-                  lies in building meaningful products that seamlessly integrate design, performance, and functionality
-                  to deliver delightful user experiences. With a strong background in architecting end-to-end solutions,
-                  I'm adept at collaborating with cross-functional teams to deliver high-quality software that meets
-                  business objectives.
+                  I'm a senior software engineer specializing in full stack web development. My passion lies in building
+                  meaningful products that seamlessly integrate design, performance, and functionality to deliver
+                  delightful user experiences. With a strong background in architecting end-to-end solutions, I'm adept
+                  at collaborating with cross-functional teams to deliver high-quality software that meets business
+                  objectives.
                 </p>
                 <p className="mb-4">
                   Currently I'm a software engineer at UpLift, a mental health startup whose mission is to rebuild
@@ -154,7 +157,16 @@ export default function Home() {
                         guidance to the team.
                       </ExperienceCardDescription>
                       <TechStack
-                        technologies={["React", "TypeScript", "Node.js", "Express", "MongoDB", "Mongoose", "REST"]}
+                        technologies={[
+                          "React",
+                          "TypeScript",
+                          "Node.js",
+                          "Express",
+                          "MongoDB",
+                          "Mongoose",
+                          "REST",
+                          "Material UI",
+                        ]}
                       />
                     </ExperienceCardMain>
                   </ExperienceCard>
@@ -166,73 +178,60 @@ export default function Home() {
                 </LinkAndArrow>
               </Button>
             </Section>
-            {/* <Section id={SectionId.Projects}>
-              <ul className="group/list space-y-12">
+            <Section id={SectionId.Projects}>
+              <ol className="group/list space-y-12">
                 <li>
-                  <Card>
-                    <CardMain className="sm:order-2">
-                      <CardTitle>Sorting Visualization App</CardTitle>
-                      <CardDescription>
-                        Build and maintain UI components for Klaviyo’s frontend, specializing in accessibility.
-                      </CardDescription>
-                      <TechnologyStack
-                        technologies={["React", "TypeScript", "Node.js", "Express", "MongoDB", "Mongoose", "REST"]}
+                  <ProjectCard>
+                    <div className="z-10 sm:col-span-2">
+                      <Image
+                        src="/images/fintrackr-4.png"
+                        alt="Interactive Event Map Screenshot"
+                        width={800}
+                        height={600}
+                        className="rounded-md shadow-sm object-container aspect-video w-full hover:opacity-90 transition"
                       />
-                    </CardMain>
-                    <Image
-                      loading="lazy"
-                      width={200}
-                      height={48}
-                      className="aspect-video object-cover rounded border-2 border-zinc-200/10 transition group-hover:border-zinc-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
-                      alt=""
-                      src="https://images.pexels.com/photos/30818598/pexels-photo-30818598/free-photo-of-squirrel-on-tree-branch-in-sunlit-forest.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    />
-                  </Card>
+                    </div>
+                    <ProjectCardMain>
+                      <ProjectCardHeader href="https://github.com/kylefriel/map-event-builder">
+                        FinTracker
+                      </ProjectCardHeader>
+                      <ProjectCardDescription>
+                        Personal finance tracker where you can link banks accounts via Plaid and visualize your complete
+                        financial landscape
+                      </ProjectCardDescription>
+                      <div className="mt-4">
+                        <TechStack technologies={["React", "Tailwind CSS", "TypeScript", "tRPC", "PostgreSQL"]} />
+                      </div>
+                    </ProjectCardMain>
+                  </ProjectCard>
                 </li>
                 <li>
-                  <Card>
-                    <CardMain className="sm:order-2">
-                      <CardTitle>Sorting Visualization App</CardTitle>
-                      <CardDescription>
-                        Build and maintain UI components for Klaviyo’s frontend, specializing in accessibility.
-                      </CardDescription>
-                      <TechnologyStack
-                        technologies={["React", "TypeScript", "Node.js", "Express", "MongoDB", "Mongoose", "REST"]}
+                  <ProjectCard>
+                    <div className="z-10 sm:col-span-2">
+                      <Image
+                        src="/images/portfolio-v1.png"
+                        alt="Interactive Event Map Screenshot"
+                        width={800}
+                        height={600}
+                        className="rounded-md shadow-sm object-container aspect-video w-full hover:opacity-90 transition"
                       />
-                    </CardMain>
-                    <Image
-                      loading="lazy"
-                      width={200}
-                      height={48}
-                      className="aspect-video object-cover rounded border-2 border-zinc-200/10 transition group-hover:border-zinc-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
-                      alt=""
-                      src="https://images.pexels.com/photos/30818598/pexels-photo-30818598/free-photo-of-squirrel-on-tree-branch-in-sunlit-forest.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    />
-                  </Card>
+                    </div>
+                    <ProjectCardMain>
+                      <ProjectCardHeader href="https://github.com/kylefriel/map-event-builder">
+                        Portfolio (v1)
+                      </ProjectCardHeader>
+                      <ProjectCardDescription>
+                        Personal finance tracker where you can link banks accounts via Plaid and visualize your complete
+                        financial landscape
+                      </ProjectCardDescription>
+                      <div className="mt-4">
+                        <TechStack technologies={["React", "Tailwind CSS", "TypeScript", "tRPC", "PostgreSQL"]} />
+                      </div>
+                    </ProjectCardMain>
+                  </ProjectCard>
                 </li>
-                <li>
-                  <Card>
-                    <CardMain className="sm:order-2">
-                      <CardTitle>Sorting Visualization App</CardTitle>
-                      <CardDescription>
-                        Build and maintain UI components for Klaviyo’s frontend, specializing in accessibility.
-                      </CardDescription>
-                      <TechnologyStack
-                        technologies={["React", "TypeScript", "Node.js", "Express", "MongoDB", "Mongoose", "REST"]}
-                      />
-                    </CardMain>
-                    <Image
-                      loading="lazy"
-                      width={200}
-                      height={48}
-                      className="aspect-video object-cover rounded border-2 border-zinc-200/10 transition group-hover:border-zinc-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
-                      alt=""
-                      src="https://images.pexels.com/photos/30818598/pexels-photo-30818598/free-photo-of-squirrel-on-tree-branch-in-sunlit-forest.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    />
-                  </Card>
-                </li>
-              </ul>
-            </Section> */}
+              </ol>
+            </Section>
           </main>
         </div>
       </div>
@@ -258,4 +257,36 @@ const Section: React.FC<SectionProps> = (props) => {
       {props.children}
     </section>
   );
+};
+export const ProjectCard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
+    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-zinc-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
+      {children}
+    </div>
+  );
+};
+
+export const ProjectCardMain: React.FC<ExperienceCardMainProps> = ({ children, className }) => {
+  return <div className={cn("z-10 sm:col-span-6", className)}>{children}</div>;
+};
+
+type ProjectCardHeaderProps = {
+  href: string;
+  children: React.ReactNode;
+};
+
+export const ProjectCardHeader: React.FC<ProjectCardHeaderProps> = ({ href, children }) => {
+  return (
+    <h3 className="text-sm font-semibold leading-snug text-zinc-200">
+      <LinkAndArrow href={href} target="_blank" rel="noopener noreferrer">
+        <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block cursor-pointer" />
+        {children}
+      </LinkAndArrow>
+    </h3>
+  );
+};
+
+export const ProjectCardDescription: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return <p className="mt-2 text-sm leading-normal text-zinc-400">{children}</p>;
 };

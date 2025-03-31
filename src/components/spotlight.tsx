@@ -32,7 +32,7 @@ export const Spotlight: React.FC<SpotlightProps> = ({ children }) => {
         className="pointer-events-none z-30 absolute inset-0 transition duration-300 lg:block hidden"
         style={{
           opacity: 1,
-          background: `radial-gradient(600px at ${position.x}px ${position.y}px, rgb(142, 197, 255, 0.06), transparent 80%)`,
+          background: `radial-gradient(300px at ${position.x}px ${position.y}px, rgb(142, 197, 255, 0.02), transparent 80%)`,
         }}
       />
     </div>
