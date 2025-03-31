@@ -25,7 +25,6 @@ export type Technology =
   | "PYTHON"
   | "FLASK"
   | "OAUTH"
-  | "GRAPHQL"
   | "PLAID"
   | "TRPC";
 

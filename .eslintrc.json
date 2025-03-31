@@ -1,7 +1,6 @@
 {
   // "extends": ["next/core-web-vitals", "next/typescript"],
   "extends": [
-    "turbo",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked"

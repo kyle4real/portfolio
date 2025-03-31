@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
-import { AnchorHTMLAttributes, forwardRef } from "react";
+import type { AnchorHTMLAttributes } from "react";
+import { forwardRef } from "react";
 
 type LinkAndArrowProps = {
   children: React.ReactNode;

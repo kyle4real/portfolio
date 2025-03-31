@@ -6,7 +6,6 @@ import {
   ExperienceCardTitle,
   ExperienceCardTitleRoleAndCompany,
   ExperienceCardDescription,
-  ExperienceCardMainProps,
 } from "@/components/experience-card";
 import { LinkAndArrow } from "@/components/link-and-arrow";
 import { Spotlight } from "@/components/spotlight";
