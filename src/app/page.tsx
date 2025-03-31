@@ -204,7 +204,7 @@ export default function Home() {
             <Section id={SectionId.Projects}>
               <ol className="group/list space-y-12 pb-20">
                 <li>
-                  <ProjectCard>
+                  <ExperienceCard>
                     <div className="z-10 sm:col-span-2">
                       <Image
                         src="/images/fintrackr-4.png"
@@ -214,13 +214,13 @@ export default function Home() {
                         className="rounded-md shadow-sm object-cover aspect-video w-full hover:opacity-90 transition"
                       />
                     </div>
-                    <ProjectCardMain>
-                      <ProjectCardHeader href="https://www.listvendgo.com/">ListVendGo</ProjectCardHeader>
-                      <ProjectCardDescription>
+                    <ExperienceCardMain>
+                      <ExperienceCardTitle href="https://www.listvendgo.com/">ListVendGo</ExperienceCardTitle>
+                      <ExperienceCardDescription>
                         A three-sided event platform that connects event hosts, vendors, and go-ers in one seamless
                         experience. Hosts can manage events, vendors can apply to sell, and go-ers can browse and
                         attend.
-                      </ProjectCardDescription>
+                      </ExperienceCardDescription>
                       <div className="mt-4">
                         <TechStack
                           technologies={[
@@ -236,11 +236,11 @@ export default function Home() {
                           ]}
                         />
                       </div>
-                    </ProjectCardMain>
-                  </ProjectCard>
+                    </ExperienceCardMain>
+                  </ExperienceCard>
                 </li>
                 <li>
-                  <ProjectCard>
+                  <ExperienceCard>
                     <div className="z-10 sm:col-span-2">
                       <Image
                         src="/images/fintrackr-4.png"
@@ -250,20 +250,20 @@ export default function Home() {
                         className="rounded-md shadow-sm object-cover aspect-video w-full hover:opacity-90 transition"
                       />
                     </div>
-                    <ProjectCardMain>
-                      <ProjectCardHeader href="https://fin-trackr.vercel.app/">FinTracker</ProjectCardHeader>
-                      <ProjectCardDescription>
+                    <ExperienceCardMain>
+                      <ExperienceCardTitle href="https://fin-trackr.vercel.app/">FinTracker</ExperienceCardTitle>
+                      <ExperienceCardDescription>
                         Personal finance tracker where you can link banks accounts via Plaid and visualize your complete
                         financial landscape
-                      </ProjectCardDescription>
+                      </ExperienceCardDescription>
                       <div className="mt-4">
                         <TechStack technologies={["NEXT", "REACT", "TAILWIND", "POSTGRES", "PRISMA", "PLAID"]} />
                       </div>
-                    </ProjectCardMain>
-                  </ProjectCard>
+                    </ExperienceCardMain>
+                  </ExperienceCard>
                 </li>
                 <li>
-                  <ProjectCard>
+                  <ExperienceCard>
                     <div className="z-10 sm:col-span-2">
                       <Image
                         src="/images/tristate.png"
@@ -273,20 +273,22 @@ export default function Home() {
                         className="rounded-md shadow-sm object-cover aspect-video w-full hover:opacity-90 transition"
                       />
                     </div>
-                    <ProjectCardMain>
-                      <ProjectCardHeader href="https://www.tristatedesigner.com/">Tri-State Designer</ProjectCardHeader>
-                      <ProjectCardDescription>
+                    <ExperienceCardMain>
+                      <ExperienceCardTitle href="https://www.tristatedesigner.com/">
+                        Tri-State Designer
+                      </ExperienceCardTitle>
+                      <ExperienceCardDescription>
                         A website for a local agency specializing in web design for businesses. Includes a contact form
                         for potential clients to get in touch and start their design journey.
-                      </ProjectCardDescription>
+                      </ExperienceCardDescription>
                       <div className="mt-4">
                         <TechStack technologies={["NEXT", "REACT", "TAILWIND", "MONGODB", "MONGOOSE"]} />
                       </div>
-                    </ProjectCardMain>
-                  </ProjectCard>
+                    </ExperienceCardMain>
+                  </ExperienceCard>
                 </li>
                 <li>
-                  <ProjectCard>
+                  <ExperienceCard>
                     <div className="z-10 sm:col-span-2">
                       <Image
                         src="/images/portfolio-v1.png"
@@ -296,14 +298,16 @@ export default function Home() {
                         className="rounded-md shadow-sm object-cover aspect-video w-full hover:opacity-90 transition"
                       />
                     </div>
-                    <ProjectCardMain>
-                      <ProjectCardHeader href="https://kylefriel.netlify.app/">Portfolio (v1)</ProjectCardHeader>
-                      <ProjectCardDescription>First version of my portfolio built in 2021.</ProjectCardDescription>
+                    <ExperienceCardMain>
+                      <ExperienceCardTitle href="https://kylefriel.netlify.app/">Portfolio (v1)</ExperienceCardTitle>
+                      <ExperienceCardDescription>
+                        First version of my portfolio built in 2021.
+                      </ExperienceCardDescription>
                       <div className="mt-4">
                         <TechStack technologies={["REACT", "SCSS", "JAVASCRIPT"]} />
                       </div>
-                    </ProjectCardMain>
-                  </ProjectCard>
+                    </ExperienceCardMain>
+                  </ExperienceCard>
                 </li>
               </ol>
             </Section>
@@ -332,36 +336,4 @@ const Section: React.FC<SectionProps> = (props) => {
       {props.children}
     </section>
   );
-};
-export const ProjectCard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return (
-    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 gap-5 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-zinc-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
-      {children}
-    </div>
-  );
-};
-
-export const ProjectCardMain: React.FC<ExperienceCardMainProps> = ({ children, className }) => {
-  return <div className={cn("z-10 sm:col-span-6", className)}>{children}</div>;
-};
-
-type ProjectCardHeaderProps = {
-  href: string;
-  children: React.ReactNode;
-};
-
-export const ProjectCardHeader: React.FC<ProjectCardHeaderProps> = ({ href, children }) => {
-  return (
-    <h3 className="text-sm font-semibold leading-snug text-zinc-200">
-      <LinkAndArrow href={href} target="_blank" rel="noopener noreferrer">
-        <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block cursor-pointer" />
-        {children}
-      </LinkAndArrow>
-    </h3>
-  );
-};
-
-export const ProjectCardDescription: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <p className="mt-2 text-sm leading-normal text-zinc-400">{children}</p>;
 };
