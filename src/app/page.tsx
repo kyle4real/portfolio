@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ExperienceCard,
   ExperienceCardMain,
@@ -14,6 +16,7 @@ import { cn } from "@/lib/utils";
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const enum SectionId {
   About = "about",
@@ -39,6 +42,33 @@ const socialItems = [
 ];
 
 export default function Home() {
+  const [activeSection, setActiveSection] = useState<SectionId>(SectionId.About);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visible.length > 0) {
+          const id = visible[0].target.id as SectionId;
+          setActiveSection(id);
+        }
+      },
+      {
+        rootMargin: "-40% 0px -50% 0px", // helps target sections near center
+        threshold: [0.1, 0.5, 0.9],
+      }
+    );
+
+    const sections = document.querySelectorAll("section[id]");
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Spotlight>
       <div className="min-h-screen mx-auto max-w-screen-xl px-6 py-12 md:py-16 lg:py-0">
@@ -54,14 +84,18 @@ export default function Home() {
               <p className="mt-4 max-w-xs leading-normal">I help startups and teams build modern web applications.</p>
               <nav className="hidden lg:block">
                 <ul className="mt-16 w-max">
-                  {navItems.map(({ label, id }) => (
-                    <li key={id}>
-                      <a href={`#${id}`} className="py-3 items-center flex">
-                        <span></span>
-                        <span>{label}</span>
-                      </a>
-                    </li>
-                  ))}
+                  {navItems.map(({ label, id }) => {
+                    const isActive = activeSection === id;
+
+                    return (
+                      <li key={id}>
+                        <a href={`#${id}`} className={cn("py-3 items-center flex", isActive && "text-blue-400")}>
+                          <span className={cn("block h-px bg-blue-400 transition-[width]", isActive ? "w-8" : "w-0")} />
+                          <span className={cn(isActive && "pl-1")}>{label}</span>
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </nav>
             </div>
@@ -179,7 +213,7 @@ export default function Home() {
               </Button>
             </Section>
             <Section id={SectionId.Projects}>
-              <ol className="group/list space-y-12">
+              <ol className="group/list space-y-12 pb-20">
                 <li>
                   <ProjectCard>
                     <div className="z-10 sm:col-span-2">
