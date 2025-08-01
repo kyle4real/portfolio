@@ -56,7 +56,7 @@ export default function Home() {
         }
       },
       {
-        rootMargin: "-40% 0px -50% 0px", // helps target sections near center
+        rootMargin: "-20% 0px -20% 0px", // helps target sections near center
         threshold: [0.1, 0.5, 0.9],
       }
     );

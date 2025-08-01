@@ -57,5 +57,5 @@ export type ExperienceCardDescriptionProps = {
 };
 
 export const ExperienceCardDescription: React.FC<ExperienceCardDescriptionProps> = (props) => {
-  return <p className="mt-2 text-sm leading-normal">{props.children}</p>;
+  return <div className="mt-2 text-sm leading-normal">{props.children}</div>;
 };
