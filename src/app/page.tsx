@@ -111,29 +111,20 @@ export default function Home() {
           <main className="lg:w-1/2 lg:py-24 pt-24">
             <Section id={SectionId.About}>
               <div>
-                <p className="mb-4">
-                  I'm a senior software engineer specializing in full stack web development. My passion lies in building
-                  meaningful products that seamlessly integrate design, performance, and functionality to deliver
-                  delightful user experiences. With a strong background in architecting end-to-end solutions, I'm adept
-                  at collaborating with cross-functional teams to deliver high-quality software that meets business
-                  objectives.
-                </p>
-                <p className="mb-4">
-                  Currently I'm a software engineer at UpLift, a mental health startup whose mission is to rebuild
-                  mental healthcare to work for everyone. I contribute to the creation and maintenance of UI components,
-                  APIs, core features, and integrations that power UpLift's platform. Beyond coding, I mentor junior
-                  developers, participate in code reviews, and help shape the technical direction of the product.
-                </p>
-                <p className="mb-4">
-                  In the past, I've had the opportunity to architech and build a logistics platform for Astro Vinyl Art.
-                  I was responsible for the entire software development lifecycle, from design to deployment, and
-                  collaborated with stakeholders to define requirements, scope, and timelines. I also hired and managed
-                  a developer to help build the platform - a rewarding experience that taught me the importance of
-                  leadership and communication.
-                </p>
                 <p>
-                  In my spare time, I'm usually working on a side project, learning a new skill, reading, playing
-                  guitar, or exploring the great outdoors.
+                  I’m a full-stack engineer with 5+ years of experience building scalable, user-focused web apps.
+                  <br />
+                  <br />
+                  I was one of the first engineers at UpLift, where I helped grow the product from early MVP to a
+                  HIPAA-compliant platform supporting thousands of therapy sessions weekly. I led cross-functional
+                  features, mentored devs, and contributed to the $30M acquisition by Teledoc in 2025.
+                  <br />
+                  <br />
+                  Before that, I helped scale a bootstrapped events business, building internal tools that supported
+                  $1M+ in annual revenue.
+                  <br />
+                  <br />
+                  Outside of work, you’ll find me building side projects, hiking, or playing guitar.
                 </p>
               </div>
             </Section>
@@ -149,11 +140,16 @@ export default function Home() {
                         <ExperienceCardTitleRoleAndCompany role="Software Engineer" company="UpLift" />
                       </ExperienceCardTitle>
                       <ExperienceCardDescription>
-                        Build and maintain critical components used across UpLift's frontend. Architect and implement
-                        core features, integrations, and APIs that power the platform. Mentor junior developers, conduct
-                        code reviews, and help shape the technical direction of the product. Work closely with product
-                        managers, designers, and developers to deliver and advocate for accessible, performant, and
-                        delightful user experiences.
+                        <ul className="list-disc pl-5">
+                          <li>Built and maintained shared components, APIs, and integrations across the full stack</li>
+                          <li>
+                            Led development of core features, including HIPAA-compliant video and therapist onboarding
+                            flows
+                          </li>
+                          <li>Mentored junior engineers, shaped code standards, and contributed to team scaling</li>
+                          <li>Collaborated cross-functionally to deliver accessible, high-performance UX</li>
+                          <li>Played a key role in scaling the platform from MVP to acquisition by Teladoc Health</li>
+                        </ul>
                       </ExperienceCardDescription>
                       <TechStack
                         technologies={[
@@ -181,11 +177,18 @@ export default function Home() {
                         <ExperienceCardTitleRoleAndCompany role="Software Engineer" company="Astro Vinyl Art" />
                       </ExperienceCardTitle>
                       <ExperienceCardDescription>
-                        Architected and built a logistics platform that streamlined operations and improved efficiency.
-                        Managed the entire software development lifecycle, from design to deployment. Collaborated with
-                        stakeholders to define requirements, scope, and timelines. Hired and managed a developer to help
-                        build the platform. Conducted code reviews, mentored junior developers, and provided technical
-                        guidance to the team.
+                        <ul className="list-disc pl-5">
+                          <li>
+                            Designed and built the company’s internal logistics and event management platform from the
+                            ground up
+                          </li>
+                          <li>
+                            Supported $1M+ in annual revenue by automating inventory, fulfillment, and vendor operations
+                          </li>
+                          <li>Hired and led a small engineering team; established dev workflows and CI/CD pipelines</li>
+                          <li>Worked closely with the founders to align technical direction with business goals</li>
+                          <li>Helped scale operations across 300+ live events nationwide</li>
+                        </ul>
                       </ExperienceCardDescription>
                       <TechStack
                         technologies={["REACT", "TYPESCRIPT", "NODE", "EXPRESS", "MONGODB", "MONGOOSE", "MATERIALUI"]}
@@ -326,7 +329,7 @@ const Section: React.FC<SectionProps> = (props) => {
   return (
     <section
       id={props.id}
-      className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+      className="mb-16 scroll-mt-16 md:mb-24 lg:mb-30 lg:scroll-mt-24"
       aria-label={navItemIdToLabel[props.id]}
     >
       <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-zinc-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
