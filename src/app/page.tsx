@@ -137,7 +137,7 @@ export default function Home() {
                     </header>
                     <ExperienceCardMain>
                       <ExperienceCardTitle href="https://www.linkedin.com/company/uplift-therapy/">
-                        <ExperienceCardTitleRoleAndCompany role="Software Engineer" company="UpLift" />
+                        <ExperienceCardTitleRoleAndCompany role="Software Engineer II" company="UpLift by BetterHelp" />
                       </ExperienceCardTitle>
                       <ExperienceCardDescription>
                         <ul className="list-disc pl-5">
@@ -174,7 +174,7 @@ export default function Home() {
                     </header>
                     <ExperienceCardMain>
                       <ExperienceCardTitle href="https://www.linkedin.com/company/astro-vinyl-art/">
-                        <ExperienceCardTitleRoleAndCompany role="Software Engineer" company="Astro Vinyl Art" />
+                        <ExperienceCardTitleRoleAndCompany role="Lead Engineer" company="Astro Vinyl Art" />
                       </ExperienceCardTitle>
                       <ExperienceCardDescription>
                         <ul className="list-disc pl-5">
@@ -197,7 +197,7 @@ export default function Home() {
                   </ExperienceCard>
                 </li>
               </ol>
-              <Button asChild className="mt-12" variant="outline">
+              <Button asChild className="mt-12 bg-blue-400/10! text-white border-blue-400/40!" variant="outline">
                 <LinkAndArrow href="/resume.pdf" target="_blank">
                   View Full Resume
                 </LinkAndArrow>
@@ -209,7 +209,7 @@ export default function Home() {
                   <ExperienceCard>
                     <div className="z-10 sm:col-span-2">
                       <Image
-                        src="/images/fintrackr-4.png"
+                        src="/images/listvendgo.png"
                         alt="Interactive Event Map Screenshot"
                         width={800}
                         height={600}
@@ -245,7 +245,7 @@ export default function Home() {
                   <ExperienceCard>
                     <div className="z-10 sm:col-span-2">
                       <Image
-                        src="/images/fintrackr-4.png"
+                        src="/images/fintrackr.png"
                         alt="Interactive Event Map Screenshot"
                         width={800}
                         height={600}
