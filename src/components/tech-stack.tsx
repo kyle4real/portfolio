@@ -26,7 +26,16 @@ export type Technology =
   | "FLASK"
   | "OAUTH"
   | "PLAID"
-  | "TRPC";
+  | "TRPC"
+  | "ZOOM_SDK"
+  | "TWILIO"
+  | "TANSTACK_QUERY"
+  | "AWS"
+  | "GITHUB_ACTIONS"
+  | "N8N"
+  | "LLMs"
+  | "AI_AGENTS"
+  | "APIS";
 
 const technologyMap: Record<Technology, string> = {
   REACT: "React",
@@ -55,6 +64,15 @@ const technologyMap: Record<Technology, string> = {
   OAUTH: "OAuth",
   PLAID: "Plaid API",
   TRPC: "tRPC",
+  ZOOM_SDK: "Zoom SDK",
+  TWILIO: "Twilio",
+  TANSTACK_QUERY: "TanStack Query",
+  AWS: "AWS",
+  GITHUB_ACTIONS: "GitHub Actions",
+  N8N: "n8n",
+  LLMs: "LLMs",
+  AI_AGENTS: "AI Agents",
+  APIS: "APIs",
 };
 
 export type TechStackProps = {

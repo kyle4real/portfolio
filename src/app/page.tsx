@@ -46,6 +46,13 @@ export default function Home() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        // Check if user is at the top of the page
+        if (window.scrollY < 100) {
+          setActiveSection(SectionId.About);
+          return;
+        }
+
+        // Filter for intersecting entries and sort by intersection ratio
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
@@ -56,8 +63,10 @@ export default function Home() {
         }
       },
       {
-        rootMargin: "-20% 0px -20% 0px", // helps target sections near center
-        threshold: [0.1, 0.5, 0.9],
+        // Less strict margins to handle smaller sections better
+        rootMargin: "-10% 0px -50% 0px",
+        // Multiple thresholds to trigger callbacks at different visibility levels
+        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
       }
     );
 
@@ -77,10 +86,8 @@ export default function Home() {
               <h1 className="text-4xl font-bold tracking-tight text-zinc-200 sm:text-5xl">
                 <Link href="/">Kyle Friel</Link>
               </h1>
-              <h2 className="mt-3 text-lg font-medium tracking-tight text-zinc-200 sm:text-xl">
-                Full Stack Web Developer
-              </h2>
-              <p className="mt-4 max-w-xs leading-normal">I help startups and teams build modern web applications.</p>
+              <h2 className="mt-3 text-lg font-medium tracking-tight text-zinc-200 sm:text-xl">Full-stack Engineer</h2>
+
               <nav className="hidden lg:block">
                 <ul className="mt-16 w-max">
                   {navItems.map(({ label, id }) => {
@@ -98,7 +105,15 @@ export default function Home() {
                 </ul>
               </nav>
             </div>
-            <ul className="ml-1 mt-8 flex items-center gap-5">
+
+            <ul className="mt-8 flex items-center gap-5">
+              <li>
+                <Button asChild className=" bg-blue-400/10! text-white border-blue-400/40!" variant="outline">
+                  <LinkAndArrow href="/resume.pdf" target="_blank">
+                    Resume
+                  </LinkAndArrow>
+                </Button>
+              </li>
               {socialItems.map(({ href, label, icon }) => (
                 <li key={label} className="text-xs">
                   <a href={href} className="block hover:text-zinc-200">
@@ -108,205 +123,228 @@ export default function Home() {
               ))}
             </ul>
           </header>
+
           <main className="lg:w-1/2 lg:py-24 pt-24">
             <Section id={SectionId.About}>
               <div>
                 <p>
-                  I’m a full-stack engineer with 5+ years of experience building scalable, user-focused web apps.
-                  <br />
-                  <br />
-                  I was one of the first engineers at UpLift, where I helped grow the product from early MVP to a
-                  HIPAA-compliant platform supporting thousands of therapy sessions weekly. I led cross-functional
-                  features, mentored devs, and contributed to the $30M acquisition by Teledoc in 2025.
-                  <br />
-                  <br />
-                  Before that, I helped scale a bootstrapped events business, building internal tools that supported
-                  $1M+ in annual revenue.
-                  <br />
-                  <br />
-                  Outside of work, you’ll find me building side projects, hiking, or playing guitar.
+                  Full-stack Engineer with 5+ years of experience owning complex product systems end-to-end, spanning
+                  healthcare compliance, real-time scheduling, analytics, and revenue-driving platforms.
                 </p>
               </div>
             </Section>
+
             <Section id={SectionId.Experience}>
               <ol className="group/list space-y-12">
+                {/* BetterHelp */}
                 <li>
                   <ExperienceCard>
                     <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-zinc-500 sm:col-span-2">
-                      2022 — Present
+                      Apr 2025 — Jan 2026
                     </header>
+
                     <ExperienceCardMain>
-                      <ExperienceCardTitle href="https://www.linkedin.com/company/uplift-therapy/">
-                        <ExperienceCardTitleRoleAndCompany role="Software Engineer II" company="UpLift by BetterHelp" />
+                      <ExperienceCardTitle href="https://www.linkedin.com/company/betterhelp-com/">
+                        <ExperienceCardTitleRoleAndCompany role="Software Engineer II" company="BetterHelp" />
                       </ExperienceCardTitle>
+
                       <ExperienceCardDescription>
                         <ul className="list-disc pl-5">
-                          <li>Built and maintained shared components, APIs, and integrations across the full stack</li>
                           <li>
-                            Led development of core features, including HIPAA-compliant video and therapist onboarding
-                            flows
+                            Drove technical knowledge transfer as an early UpLift engineer during its $45M acquisition
+                            by BetterHelp, implementing insurance infrastructure that expanded the platform beyond
+                            self-pay
                           </li>
-                          <li>Mentored junior engineers, shaped code standards, and contributed to team scaling</li>
-                          <li>Collaborated cross-functionally to deliver accessible, high-performance UX</li>
-                          <li>Played a key role in scaling the platform from MVP to acquisition by Teladoc Health</li>
+                          <li>
+                            Architected and built billable Intake and Progress Notes using Next.js and TypeScript,
+                            introducing structured data, AI-assisted narratives, and safety workflows to improve audit
+                            compliance
+                          </li>
+                          <li>
+                            Built a real-time scheduling experience allowing clients to book sessions with therapists or
+                            psychiatrists based on team availability, featuring live calendar slots and dashboard
+                            notifications
+                          </li>
+                          <li>
+                            Delivered UTM-driven onboarding attribution with Python, Flask, and PostgreSQL, enabling
+                            reliable conversion and step-level drop-off analysis for marketing teams
+                          </li>
                         </ul>
                       </ExperienceCardDescription>
+
+                      <TechStack
+                        technologies={["NEXT", "TYPESCRIPT", "TAILWIND", "PYTHON", "FLASK", "POSTGRES", "DOCKER"]}
+                      />
+                    </ExperienceCardMain>
+                  </ExperienceCard>
+                </li>
+
+                {/* UpLift */}
+                <li>
+                  <ExperienceCard>
+                    <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-zinc-500 sm:col-span-2">
+                      Feb 2022 — Apr 2025
+                    </header>
+
+                    <ExperienceCardMain>
+                      <ExperienceCardTitle href="https://www.linkedin.com/company/uplift-therapy/">
+                        <ExperienceCardTitleRoleAndCompany role="Software Engineer" company="UpLift" />
+                      </ExperienceCardTitle>
+
+                      <ExperienceCardDescription>
+                        <ul className="list-disc pl-5">
+                          <li>
+                            Developed a multi-step onboarding and matching flow using React, TypeScript, and XState,
+                            improving care triage and addressing 53% drop-off in the highest-impact funnel stage
+                          </li>
+                          <li>
+                            Built a provider onboarding and profile lifecycle experience with editable forms, submission
+                            states, and admin review feedback, supporting iterative updates and approval-driven
+                            publishing
+                          </li>
+                          <li>
+                            Implemented a responsive insurance management flow for primary and secondary coverage,
+                            enforcing strict business rules across commercial, Medicare, and Medicaid plans
+                          </li>
+                          <li>
+                            Architected a Zoom SDK live session experience replacing Twilio, including a
+                            therapist-facing video layout with in-session sidebar tools for notes, client data, and
+                            workflow efficiency
+                          </li>
+                          <li>
+                            Empowered other devs on the team through leadership by interviewing candidates, mentoring
+                            junior engineers, engaging in code reviews, and setting standards for codebase best
+                            practices
+                          </li>
+                        </ul>
+                      </ExperienceCardDescription>
+
                       <TechStack
                         technologies={[
                           "REACT",
                           "TYPESCRIPT",
-                          "STORYBOOK",
+                          "TANSTACK_QUERY",
                           "MATERIALUI",
-                          "REACT_QUERY",
                           "PYTHON",
                           "FLASK",
-                          "GRAPHQL",
                           "POSTGRES",
+                          "ZOOM_SDK",
+                          "TWILIO",
+                          "DOCKER",
                         ]}
                       />
                     </ExperienceCardMain>
                   </ExperienceCard>
                 </li>
+
+                {/* Astro Vinyl Art */}
                 <li className="mb-12">
                   <ExperienceCard>
                     <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-zinc-500 sm:col-span-2">
-                      2019 — 2022
+                      Aug 2019 — Feb 2022
                     </header>
+
                     <ExperienceCardMain>
                       <ExperienceCardTitle href="https://www.linkedin.com/company/astro-vinyl-art/">
                         <ExperienceCardTitleRoleAndCompany role="Lead Engineer" company="Astro Vinyl Art" />
                       </ExperienceCardTitle>
+
                       <ExperienceCardDescription>
                         <ul className="list-disc pl-5">
                           <li>
-                            Designed and built the company’s internal logistics and event management platform from the
-                            ground up
+                            Designed and built a logistics web application unifying event scheduling, inventory,
+                            warehouse picking, and sales workflows, driving 150% YoY ARR growth using React, TypeScript,
+                            Node.js
                           </li>
                           <li>
-                            Supported $1M+ in annual revenue by automating inventory, fulfillment, and vendor operations
+                            Scaled engineering output by hiring and mentoring an engineer to own core features, enforce
+                            code quality, and lead code reviews
                           </li>
-                          <li>Hired and led a small engineering team; established dev workflows and CI/CD pipelines</li>
-                          <li>Worked closely with the founders to align technical direction with business goals</li>
-                          <li>Helped scale operations across 300+ live events nationwide</li>
+                          <li>
+                            Built a mobile-friendly POS system backed by a Node.js, Express, and TypeScript API,
+                            tracking 300k+ sales and inventory updates and integrating seamlessly with the Shopify API
+                          </li>
+                          <li>
+                            Improved analytics performance by 600% by optimizing MongoDB queries and data access
+                            patterns for high-volume reporting on custom MUI chart components
+                          </li>
+                          <li>
+                            Established CI/CD pipelines with GitHub Actions, set up staging environments, led
+                            cross-functional development in Jira, and integrated AWS, Google APIs, Cloudinary, and
+                            Firebase
+                          </li>
                         </ul>
                       </ExperienceCardDescription>
+
                       <TechStack
-                        technologies={["REACT", "TYPESCRIPT", "NODE", "EXPRESS", "MONGODB", "MONGOOSE", "MATERIALUI"]}
+                        technologies={[
+                          "REACT",
+                          "TYPESCRIPT",
+                          "TANSTACK_QUERY",
+                          "MATERIALUI",
+                          "NODE",
+                          "EXPRESS",
+                          "MONGODB",
+                          "AWS",
+                          "GITHUB_ACTIONS",
+                        ]}
                       />
                     </ExperienceCardMain>
                   </ExperienceCard>
                 </li>
               </ol>
+
               <Button asChild className="mt-12 bg-blue-400/10! text-white border-blue-400/40!" variant="outline">
                 <LinkAndArrow href="/resume.pdf" target="_blank">
                   View Full Resume
                 </LinkAndArrow>
               </Button>
             </Section>
+
             <Section id={SectionId.Projects}>
               <ol className="group/list space-y-12 pb-20">
                 <li>
                   <ExperienceCard>
-                    <div className="z-10 sm:col-span-2">
-                      <Image
-                        src="/images/listvendgo.png"
-                        alt="Interactive Event Map Screenshot"
-                        width={800}
-                        height={600}
-                        className="rounded-md shadow-sm object-cover aspect-video w-full hover:opacity-90 transition"
-                      />
-                    </div>
                     <ExperienceCardMain>
-                      <ExperienceCardTitle href="https://www.listvendgo.com/">ListVendGo</ExperienceCardTitle>
+                      <ExperienceCardTitle href="https://youtube.com/@KyleFrielTech">
+                        AI Automation Education
+                      </ExperienceCardTitle>
                       <ExperienceCardDescription>
-                        A three-sided event platform that connects event hosts, vendors, and go-ers in one seamless
-                        experience. Hosts can manage events, vendors can apply to sell, and go-ers can browse and
-                        attend.
+                        Grew a YouTube channel teaching AI and no-code automation (n8n, LLM workflows), reaching
+                        thousands of learners through hands-on tutorials and real-world use cases.
+                      </ExperienceCardDescription>
+                      <div className="mt-4">
+                        <TechStack technologies={["N8N", "LLMs", "APIS", "AI_AGENTS"]} />
+                      </div>
+                    </ExperienceCardMain>
+                  </ExperienceCard>
+                </li>
+
+                <li>
+                  <ExperienceCard>
+                    <ExperienceCardMain>
+                      <ExperienceCardTitle href="https://cyanstack.com">
+                        Cyan Stack — Independent Software Consulting
+                      </ExperienceCardTitle>
+                      <ExperienceCardDescription>
+                        Built custom full-stack software and automation solutions for clients, handling architecture,
+                        integrations, distributed systems, and deployment.
                       </ExperienceCardDescription>
                       <div className="mt-4">
                         <TechStack
                           technologies={[
-                            "NEXT",
                             "REACT",
+                            "NEXT",
+                            "TYPESCRIPT",
+                            "TAILWIND",
                             "NODE",
                             "EXPRESS",
-                            "PRISMA",
                             "POSTGRES",
-                            "TAILWIND",
-                            "TRPC",
-                            "REACT_QUERY",
+                            "MONGODB",
+                            "AWS",
+                            "DOCKER",
                           ]}
                         />
-                      </div>
-                    </ExperienceCardMain>
-                  </ExperienceCard>
-                </li>
-                <li>
-                  <ExperienceCard>
-                    <div className="z-10 sm:col-span-2">
-                      <Image
-                        src="/images/fintrackr.png"
-                        alt="Interactive Event Map Screenshot"
-                        width={800}
-                        height={600}
-                        className="rounded-md shadow-sm object-cover aspect-video w-full hover:opacity-90 transition"
-                      />
-                    </div>
-                    <ExperienceCardMain>
-                      <ExperienceCardTitle href="https://fin-trackr.vercel.app/">FinTracker</ExperienceCardTitle>
-                      <ExperienceCardDescription>
-                        Personal finance tracker where you can link banks accounts via Plaid and visualize your complete
-                        financial landscape
-                      </ExperienceCardDescription>
-                      <div className="mt-4">
-                        <TechStack technologies={["NEXT", "REACT", "TAILWIND", "POSTGRES", "PRISMA", "PLAID"]} />
-                      </div>
-                    </ExperienceCardMain>
-                  </ExperienceCard>
-                </li>
-                <li>
-                  <ExperienceCard>
-                    <div className="z-10 sm:col-span-2">
-                      <Image
-                        src="/images/tristate.png"
-                        alt="Interactive Event Map Screenshot"
-                        width={800}
-                        height={600}
-                        className="rounded-md shadow-sm object-cover aspect-video w-full hover:opacity-90 transition"
-                      />
-                    </div>
-                    <ExperienceCardMain>
-                      <ExperienceCardTitle href="https://www.tristatedesigner.com/">
-                        Tri-State Designer
-                      </ExperienceCardTitle>
-                      <ExperienceCardDescription>
-                        A website for a local agency specializing in web design for businesses. Includes a contact form
-                        for potential clients to get in touch and start their design journey.
-                      </ExperienceCardDescription>
-                      <div className="mt-4">
-                        <TechStack technologies={["NEXT", "REACT", "TAILWIND", "MONGODB", "MONGOOSE"]} />
-                      </div>
-                    </ExperienceCardMain>
-                  </ExperienceCard>
-                </li>
-                <li>
-                  <ExperienceCard>
-                    <div className="z-10 sm:col-span-2">
-                      <Image
-                        src="/images/portfolio-v1.png"
-                        alt="Interactive Event Map Screenshot"
-                        width={800}
-                        height={600}
-                        className="rounded-md shadow-sm object-cover aspect-video w-full hover:opacity-90 transition"
-                      />
-                    </div>
-                    <ExperienceCardMain>
-                      <ExperienceCardTitle href="https://kylefriel.netlify.app/">Portfolio (v1)</ExperienceCardTitle>
-                      <ExperienceCardDescription>
-                        First version of my portfolio built in 2021.
-                      </ExperienceCardDescription>
-                      <div className="mt-4">
-                        <TechStack technologies={["REACT", "SCSS", "JAVASCRIPT"]} />
                       </div>
                     </ExperienceCardMain>
                   </ExperienceCard>
