@@ -306,23 +306,6 @@ export default function Home() {
                 <li>
                   <ExperienceCard>
                     <ExperienceCardMain>
-                      <ExperienceCardTitle href="https://youtube.com/@KyleFrielTech">
-                        AI Automation Education
-                      </ExperienceCardTitle>
-                      <ExperienceCardDescription>
-                        Grew a YouTube channel teaching AI and no-code automation (n8n, LLM workflows), reaching
-                        thousands of learners through hands-on tutorials and real-world use cases.
-                      </ExperienceCardDescription>
-                      <div className="mt-4">
-                        <TechStack technologies={["N8N", "LLMs", "APIS", "AI_AGENTS"]} />
-                      </div>
-                    </ExperienceCardMain>
-                  </ExperienceCard>
-                </li>
-
-                <li>
-                  <ExperienceCard>
-                    <ExperienceCardMain>
                       <ExperienceCardTitle href="https://cyanstack.com">
                         Cyan Stack — Independent Software Consulting
                       </ExperienceCardTitle>
